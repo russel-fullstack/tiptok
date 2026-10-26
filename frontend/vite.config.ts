@@ -8,9 +8,9 @@ export default defineConfig({
     vue(),
     tailwindcss(),
   ],
-  test: {
-    environment: 'jsdom',
-    globals: true,
-    include: ['src/**/*.{spec,test}.ts'],
-  },
+  // test: {
+  //   environment: 'jsdom',
+  //   globals: true,
+  //   include: ['src/**/*.{spec,test}.ts'],
+  // },
 })

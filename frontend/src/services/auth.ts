@@ -1,10 +1,7 @@
-
 import { api } from './api'
+import type { AuthUser } from '../types'
 
-/**
- * Données nécessaires à l'inscription.
- */
-export interface RegisterData {
+export interface RegisterPayload {
   name: string
   username: string
   email: string
@@ -12,61 +9,39 @@ export interface RegisterData {
   password_confirmation: string
 }
 
-/**
- * Données nécessaires à la connexion.
- */
-export interface LoginData {
-  email: string
-  password: string
-}
-
-/**
- * Structure d'un utilisateur authentifié.
- */
-export interface AuthUser {
-  id: number
-  name: string
-  username: string
-  email: string
-  avatar_url: string | null
-  bio: string | null
-  email_verified_at: string | null
-}
-
-/**
- * Initialise le cookie CSRF de Laravel Sanctum.
- */
-export async function getCsrfCookie(): Promise<void> {
-  await api.get('/sanctum/csrf-cookie')
-}
-
-/**
- * Inscrit un nouvel utilisateur.
- */
-export async function register(data: RegisterData): Promise<void> {
-  await getCsrfCookie()
-  await api.post('/register', data)
-}
-
-/**
- * Connecte un utilisateur existant.
- */
-export async function login(data: LoginData): Promise<void> {
-  await getCsrfCookie()
-  await api.post('/login', data)
-}
-
-/**
- * Récupère les informations de l'utilisateur connecté.
- */
 export async function getCurrentUser(): Promise<AuthUser> {
-  const response = await api.get<AuthUser>('/api/user')
-  return response.data
+  const { data } = await api.get<AuthUser>('/api/user')
+  return data
 }
 
-/**
- * Déconnecte l'utilisateur.
- */
+export async function login(payload: { email: string; password: string }): Promise<AuthUser> {
+  await api.get('/sanctum/csrf-cookie')
+  await api.post('/login', payload)
+  return getCurrentUser()
+}
+
+export async function register(payload: RegisterPayload): Promise<AuthUser> {
+  await api.get('/sanctum/csrf-cookie')
+  await api.post('/register', payload)
+  return getCurrentUser()
+}
+
 export async function logout(): Promise<void> {
   await api.post('/logout')
+}
+
+export async function forgotPassword(email: string): Promise<void> {
+  await api.get('/sanctum/csrf-cookie')
+  await api.post('/forgot-password', { email })
+}
+
+export async function resetPassword(payload: {
+  token: string; email: string; password: string; password_confirmation: string
+}): Promise<void> {
+  await api.get('/sanctum/csrf-cookie')
+  await api.post('/reset-password', payload)
+}
+
+export async function resendVerification(): Promise<void> {
+  await api.post('/email/verification-notification')
 }

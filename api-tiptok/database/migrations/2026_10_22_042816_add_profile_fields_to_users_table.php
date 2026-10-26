@@ -6,30 +6,22 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-        $table->string('username')->nullable()->unique();
-        $table->string('avatar_url')->nullable();
-        $table->text('bio')->nullable();
+            // À n'exécuter que pour les colonnes absentes de ta base actuelle
+            $table->string('username', 30)->unique()->after('name');
+            $table->string('avatar_url')->nullable()->after('email');
+            $table->string('avatar_path')->nullable()->after('avatar_url'); // chemin disque (ch. 12)
+            $table->string('bio', 300)->nullable()->after('avatar_path');
+            $table->string('role', 20)->default('user')->after('bio');       // user | moderator | admin (ch. 13)
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-               $table->dropUnique(['username']);
-        $table->dropColumn([
-            'username',
-            'avatar_url',
-            'bio',
-        ]);
+            $table->dropColumn(['username', 'avatar_url', 'avatar_path', 'bio', 'role']);
         });
     }
 };

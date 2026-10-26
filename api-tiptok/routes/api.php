@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\UserProfileController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -25,4 +26,6 @@ Route::prefix('v1')->group(function (): void {
      Route::middleware('auth:sanctum')->group(function () {
         // Les routes protégées seront ajoutées ici.
     });
+
+    Route::get('/users/{user}', [UserProfileController::class, 'show'])->whereNumber('user');
 });
