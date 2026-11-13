@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use Dedoc\Scramble\Scramble;
+use Dedoc\Scramble\Support\Generator\OpenApi;
+use Dedoc\Scramble\Support\Generator\SecurityScheme;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
@@ -54,5 +57,15 @@ class AppServiceProvider extends ServiceProvider
             return Limit::perMinute(10)->by($request->user()?->id ?:
                 $request->ip());
         });
+
+        //configuration OpenAPI de scramble
+        Scramble::configure()
+        ->withDocumentTransformers(
+            function (OpenApi $openApi): void {
+                $openApi->secure(
+                    SecurityScheme::http('bearer')
+                );
+            }
+        );
     }
 }
