@@ -1,42 +1,58 @@
-# 📱 TipTok — Plateforme de Micro-Contenus Textuels en Temps Réel
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-> **TipTok** est une application web découplée *Mobile-First* directement inspirée du format d'interaction TikTok, réimaginé pour du contenu textuel dynamique, des dégradés visuels captivants et des échanges instantanés.
+<p align="center">
+<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+</p>
 
----
+## About Laravel
 
-## 🎯 Concept & Problématique
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-Les plateformes de contenu actuelles se divisent souvent en deux catégories :
-1. **Les réseaux textuels classiques**, axés sur la lecture continue mais pauvres en dynamique visuelle et en immersion.
-2. **Les plateformes vidéo (TikTok, Reels)**, ultra-engagantes grâce au défilement plein écran et au temps réel, mais centrées exclusivement sur la vidéo.
+- [Simple, fast routing engine](https://laravel.com/docs/routing).
+- [Powerful dependency injection container](https://laravel.com/docs/container).
+- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+- [Robust background job processing](https://laravel.com/docs/queues).
+- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-**TipTok** fusionne le meilleur des deux mondes :
-* **Un défilement vertical plein écran (`Scroll Snap`)** fluide et immersif.
-* **Des cartes de micro-contenus textuels (max 280 caractères)** sur fond de dégradés CSS personnalisés, d'images d'arrière-plan élégantes ou d'ambiances sonores légères.
-* **Une interactivité temps réel absolue** : chaque like, commentaire ou abonnement est diffusé instantanément sur les écrans de tous les utilisateurs connectés grâce aux WebSockets.
+Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
----
+## Learning Laravel
 
-## 🚀 Fonctionnalités Clés
+Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-### 👤 1. Authentification & Gestion de Profil
-* Inscription et connexion sécurisées via des jetons d'accès API (**Bearer Tokens**).
-* Gestion complète du profil utilisateur (Nom d'utilisateur, avatar, biographie).
-* Système d'abonnement (**Follow / Unfollow**) avec mise à jour instantanée des statistiques.
+In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-### 📰 2. Flux de Contenu Immersif (Feeds)
-* **Feed "Pour toi"** : Découverte globale des posts populaires et récents.
-* **Feed "Abonnements"** : Flux dédié exclusivement aux créateurs suivis.
-* **Scroll Snap Vertical** : Navigation fluide d'un post à l'autre d'un simple geste sur mobile ou molette sur ordinateur.
-* **Génération & Publication** : Création rapide de cartes textuelles avec sélection de styles graphiques (dégradés, arrière-plans) et de hashtags.
+You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
 
-### ⚡ 3. Interactions en Temps Réel (WebSockets)
-* **Likes Instantanés** : Le compteur de mentions "J'aime" s'actualise en direct sur l'écran du créateur et des spectateurs avec une animation de cœur.
-* **Tiroir de Commentaires (Bottom Sheet)** : Ouverture d'un panneau latéral/inférieur permettant de discuter sur un post sans quitter le fil. Les nouveaux commentaires apparaissent au fil de la frappe des utilisateurs.
-* **Notifications Push** : Alerte en temps réel lorsqu'un nouvel utilisateur vous suit.
+## Agentic Development
 
----
+Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
 
-## 🛠️ Architecture Technique & Stack
+```bash
+composer require laravel/boost --dev
 
-L'application repose sur une **architecture complètement découplée** entre le serveur d'API et le client interface.
+php artisan boost:install
+```
+
+Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+
+## Contributing
+
+Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+
+## Code of Conduct
+
+In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+
+## Security Vulnerabilities
+
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+
+## License
+
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
